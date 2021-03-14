@@ -2,7 +2,6 @@
 
 namespace ProjektASD
 {
-    
     class Connection // Class to define connection between Subnets
     {
         // Destination Subnet from THIS Subnet

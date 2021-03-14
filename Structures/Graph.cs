@@ -18,6 +18,7 @@ namespace ProjektASD
                 }
             }
 
+            // Add new connections to lists in sourceSubnet and destSubnet
             destSubnet.Connect(sourceSubnet, capacity);
             sourceSubnet.Connect(destSubnet, capacity);
         }

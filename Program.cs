@@ -32,6 +32,7 @@ namespace ProjektASD
                 return;
             }
 
+
             // Check and execute commands from file
             foreach (string line in input_lines)
             {

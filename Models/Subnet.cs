@@ -12,7 +12,6 @@ namespace ProjektASD
         // Amount of devices in this Subnet
         public int countDevices;
 
-        // Graph
         // Parameters to find best routing route from one Subnet to another using Dijkstra algorithm
         public int distanceFromSource;
         public Subnet predecessor;

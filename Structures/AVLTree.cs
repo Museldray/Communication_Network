@@ -7,6 +7,7 @@ namespace ProjektASD
         // Root of this tree
         public Device deviceRoot = null;
 
+
         // Single right rotation in unbalanced Device tree
         Device RightRotate(Device y) // Starting root
         {

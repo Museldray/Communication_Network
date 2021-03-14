@@ -17,7 +17,7 @@ namespace ProjektASD
         // Left and right child to use in AVL tree structure
         public Device leftDevice, rightDevice;
 
-        // Device constructor
+        // Device parameter constructor
         public Device(string address, uint addressInt, Subnet subnet)
         {
             this.height = 1;
