@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProjektASD
+namespace ProjektASD.Models
 {
     class Connection // Class to define connection between Subnets
     {

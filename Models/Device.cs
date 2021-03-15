@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProjektASD
+namespace ProjektASD.Models
 {
     class Device // Class to define Device to use in AVL tree structure
     {

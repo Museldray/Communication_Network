@@ -1,6 +1,7 @@
 ﻿using System;
+using ProjektASD.Models;
 
-namespace ProjektASD
+namespace ProjektASD.Structures
 {
     class AVLTree // AVL Tree class
     {
