@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
 using System.Linq;
+using ProjektASD.Structures;
+using ProjektASD.Models;
 
 namespace ProjektASD
 {
