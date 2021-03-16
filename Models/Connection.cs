@@ -2,9 +2,8 @@
 using System.Linq;
 using Medallion.Collections;
 
-namespace ProjektASD
+namespace ProjektASD.Models
 {
-    
     class Connection // Class to define connection between Subnets
     {
         // Destination Subnet from THIS Subnet

@@ -1,11 +1,13 @@
 ﻿using System;
+using ProjektASD.Models;
 
-namespace ProjektASD
+namespace ProjektASD.Structures
 {
     class AVLTree // AVL Tree class
     {
         // Root of this tree
         public Device deviceRoot = null;
+
 
         // Single right rotation in unbalanced Device tree
         Device RightRotate(Device y) // Starting root

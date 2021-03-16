@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Medallion.Collections;
+using ProjektASD.Models;
 
-namespace ProjektASD
+namespace ProjektASD.Structures
 {
     class Graph
     {
@@ -19,6 +20,7 @@ namespace ProjektASD
                 }
             }
 
+            // Add new connections to lists in sourceSubnet and destSubnet
             destSubnet.Connect(sourceSubnet, capacity);
             sourceSubnet.Connect(destSubnet, capacity);
         }

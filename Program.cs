@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
 using System.Linq;
+using ProjektASD.Structures;
+using ProjektASD.Models;
 
 namespace ProjektASD
 {
@@ -31,6 +33,7 @@ namespace ProjektASD
                 Console.ReadKey();
                 return;
             }
+
 
             // Check and execute commands from file
             foreach (string line in input_lines)

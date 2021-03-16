@@ -3,7 +3,6 @@ using System.Net;
 
 namespace ProjektASD
 {
-    
     class AddressOperator // Class to operate on IP addresses
     {
         // Convert IP address to integer to use in AVL tree

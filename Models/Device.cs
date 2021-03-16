@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProjektASD
+namespace ProjektASD.Models
 {
     class Device // Class to define Device to use in AVL tree structure
     {
@@ -17,7 +17,7 @@ namespace ProjektASD
         // Left and right child to use in AVL tree structure
         public Device leftDevice, rightDevice;
 
-        // Device constructor
+        // Device parameter constructor
         public Device(string address, uint addressInt, Subnet subnet)
         {
             this.height = 1;
