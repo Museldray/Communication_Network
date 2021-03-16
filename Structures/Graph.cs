@@ -9,6 +9,7 @@ namespace ProjektASD
         // Add connection between two Subnets
         public void Connect(Subnet sourceSubnet, Subnet destSubnet, int capacity)
         {
+            // If Subnets are already connected
             foreach (Connection polaczenie in sourceSubnet.connectedSubnets)
             {
                 if (polaczenie.destSubnet == destSubnet)

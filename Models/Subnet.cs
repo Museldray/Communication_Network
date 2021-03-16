@@ -41,7 +41,7 @@ namespace ProjektASD
             connectedSubnets.Add(new Connection(destSubnet, capacity));
         }
 
-        // Remove connection from this Subnet to target Subnet
+        // Remove between this Subnet and destination Subnet
         public void Disconnect(Subnet destSubnet)
         {
             foreach (Connection connection in connectedSubnets)
