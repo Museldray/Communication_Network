@@ -5,7 +5,7 @@ namespace ProjektASD.Models
     class Connection // Class to define connection between Subnets
     {
         // Destination Subnet from THIS Subnet
-        public Subnet destSubnet; 
+        private Subnet destSubnet; 
         // Capacity
         public int capacity;
 
@@ -13,6 +13,12 @@ namespace ProjektASD.Models
         {
             this.destSubnet = destSubnet;
             this.capacity = capacity;
+        }
+
+        public Subnet DestSubnet
+        {
+            get => destSubnet;
+            set => destSubnet = value;
         }
     }
 }

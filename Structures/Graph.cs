@@ -10,9 +10,9 @@ namespace ProjektASD.Structures
         // Add connection between two Subnets
         public void Connect(Subnet sourceSubnet, Subnet destSubnet, int capacity)
         {
-            foreach (Connection polaczenie in sourceSubnet.connectedSubnets)
+            foreach (Connection polaczenie in sourceSubnet.ConnectedSubnets)
             {
-                if (polaczenie.destSubnet == destSubnet)
+                if (polaczenie.DestSubnet == destSubnet)
                 {
                     Console.WriteLine("NIE");
                     return;
@@ -27,9 +27,9 @@ namespace ProjektASD.Structures
         // Remove connection between two Subnets
         public void Disconnect(Subnet sourceSubnet, Subnet destSubnet)
         {
-            foreach (Connection polaczenie in sourceSubnet.connectedSubnets)
+            foreach (Connection polaczenie in sourceSubnet.ConnectedSubnets)
             {
-                if (polaczenie.destSubnet == destSubnet)
+                if (polaczenie.DestSubnet == destSubnet)
                 {
                     sourceSubnet.Disconnect(destSubnet);
                     destSubnet.Disconnect(sourceSubnet);
@@ -80,10 +80,10 @@ namespace ProjektASD.Structures
 
                 // Else, set visited as true and update distance from source to connected Subnets
                 subnet.visited = true;
-                foreach (Connection connectedSubnets in subnet.connectedSubnets) // O(m)
+                foreach (Connection connectedSubnets in subnet.ConnectedSubnets) // O(m)
                 {
                     // Analize every connected Subnet
-                    Subnet connectedSubnet = connectedSubnets.destSubnet;
+                    Subnet connectedSubnet = connectedSubnets.DestSubnet;
 
                     // If distance from currently analized subnet to connected Subnet is better than currently set distance From Source then update it and set predecessor
                     if (subnet.distanceFromSource == int.MaxValue || subnet.distanceFromSource + connectedSubnets.capacity < connectedSubnet.distanceFromSource)                                                                                             
@@ -112,19 +112,19 @@ namespace ProjektASD.Structures
             {
                 return;
             }
-            if (currentSubnet.subnet == sourceSubnet)
+            if (currentSubnet.Subnet == sourceSubnet)
             {
                 sourceSubnet.distanceFromSource = 0;
             }
             else
             {
-                currentSubnet.subnet.distanceFromSource = int.MaxValue;
-                currentSubnet.subnet.predecessor = null;
-                currentSubnet.subnet.visited = false;
+                currentSubnet.Subnet.distanceFromSource = int.MaxValue;
+                currentSubnet.Subnet.predecessor = null;
+                currentSubnet.Subnet.visited = false;
             }
 
-            SetParemetersForDijkstra(currentSubnet.leftDevice, sourceSubnet);
-            SetParemetersForDijkstra(currentSubnet.rightDevice, sourceSubnet);
+            SetParemetersForDijkstra(currentSubnet.LeftDevice, sourceSubnet);
+            SetParemetersForDijkstra(currentSubnet.RightDevice, sourceSubnet);
         }
     }
 }

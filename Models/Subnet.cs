@@ -6,17 +6,17 @@ namespace ProjektASD.Models
     class Subnet : IComparable<Subnet>
     {
         // Address and it's integer representation
-        public string subnetAddress;
-        public uint subnetAddressInt;
-        
+        private string subnetAddress;
+        private uint subnetAddressInt;
+
         // Amount of devices in this Subnet
-        public int countDevices;
+        private int countDevices;
 
         // Parameters to find best routing route from one Subnet to another using Dijkstra algorithm
         public int distanceFromSource;
         public Subnet predecessor;
         public Boolean visited;
-        public List<Connection> connectedSubnets;
+        private List<Connection> connectedSubnets;
 
         public Subnet(string subnetAddress)
         {
@@ -26,6 +26,28 @@ namespace ProjektASD.Models
             this.subnetAddressInt = AddressOperator.ConvertAddressToInt(subnetAddress);
 
             this.connectedSubnets = new List<Connection>();
+        }
+
+        // GET/SET Private params
+        public List<Connection> ConnectedSubnets
+        {
+            get => connectedSubnets;
+            set => connectedSubnets = value;
+        }
+        public string SubnetAddress
+        {
+            get => subnetAddress;
+            set => subnetAddress = value;
+        }
+        public uint SubnetAddressInt
+        {
+            get => subnetAddressInt;
+            set => subnetAddressInt = value;
+        }
+        public int CountDevices
+        {
+            get => countDevices;
+            set => countDevices = value;
         }
 
         // Compare Subnets by distanceFromSource
@@ -45,7 +67,7 @@ namespace ProjektASD.Models
         {
             foreach (Connection connection in connectedSubnets)
             {
-                if (connection.destSubnet == destSubnet)
+                if (connection.DestSubnet == destSubnet)
                 {
                     connectedSubnets.Remove(connection);
                     return;

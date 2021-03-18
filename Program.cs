@@ -44,21 +44,21 @@ namespace ProjektASD
                 if (command[0] == "DK")
                 {
                     string subnetAddress = AddressOperator.ConvertAddressToSubnet(command[1]);
-                    Device device = tree.SearchAndReturnDevice(tree.deviceRoot, command[1]);
-                    Subnet subnet = tree.SearchAndReturnSubnet(tree.deviceRoot, subnetAddress);
+                    Device device = tree.SearchAndReturnDevice(tree.DeviceRoot, command[1]);
+                    Subnet subnet = tree.SearchAndReturnSubnet(tree.DeviceRoot, subnetAddress);
 
                     // If there is no device and subnet, create both of them
                     if (device == null && subnet == null)
                     {
                         subnet = new Subnet(subnetAddress);
-                        tree.deviceRoot = tree.Add(tree.deviceRoot, command[1], AddressOperator.ConvertAddressToInt(command[1]), subnet);
-                        subnet.countDevices++;
+                        tree.DeviceRoot = tree.Add(tree.DeviceRoot, command[1], AddressOperator.ConvertAddressToInt(command[1]), subnet);
+                        subnet.CountDevices++;
                     }
                     // If there is no device with that address but there is already subnet, create device, connect Subnet to it and iterate number of devices in subnet
                     else if (device == null && subnet != null)
                     {
-                        tree.deviceRoot = tree.Add(tree.deviceRoot, command[1], AddressOperator.ConvertAddressToInt(command[1]), subnet);
-                        subnet.countDevices++;
+                        tree.DeviceRoot = tree.Add(tree.DeviceRoot, command[1], AddressOperator.ConvertAddressToInt(command[1]), subnet);
+                        subnet.CountDevices++;
                     }
                 }
 
@@ -66,25 +66,25 @@ namespace ProjektASD
                 // Delete specified device from the tree
                 if (command[0] == "UK")
                 {
-                    Device device = tree.SearchAndReturnDevice(tree.deviceRoot, command[1]);
+                    Device device = tree.SearchAndReturnDevice(tree.DeviceRoot, command[1]);
 
                     // If device exists
                     if (device != null)
                     {
                         // So there exists subnet
-                        Subnet subnet = device.subnet;
+                        Subnet subnet = device.Subnet;
 
                         // If there's only one computer in subnet, delete connections with other subnets and delete this subnet
-                        if (subnet.countDevices == 1)
+                        if (subnet.CountDevices == 1)
                         {
                             // Delete connections from all subnets connected to this subnet
                             LinkedList<Subnet> tmp = new LinkedList<Subnet>();
                             int helper = 0;
 
-                            foreach (Connection connection in subnet.connectedSubnets)
+                            foreach (Connection connection in subnet.ConnectedSubnets)
                             {
                                 helper++;
-                                tmp.AddLast(connection.destSubnet);
+                                tmp.AddLast(connection.DestSubnet);
                             }
 
                             for (int i = 0; i < helper; i++)
@@ -94,16 +94,16 @@ namespace ProjektASD
                             }
 
                             // Delete this Subnet
-                            device.subnet = null;
+                            device.Subnet = null;
 
                             // Delete this Device
-                            tree.deviceRoot = tree.Delete(tree.deviceRoot, device.address, device.addressInt);
+                            tree.DeviceRoot = tree.Delete(tree.DeviceRoot, device.Address, device.AddressInt);
                         }
                         // If there's more then one device in this Subnet then delete destination Device
                         else
                         {
-                            tree.deviceRoot = tree.Delete(tree.deviceRoot, command[1], AddressOperator.ConvertAddressToInt(command[1]));
-                            subnet.countDevices--;
+                            tree.DeviceRoot = tree.Delete(tree.DeviceRoot, command[1], AddressOperator.ConvertAddressToInt(command[1]));
+                            subnet.CountDevices--;
                         }
                     }
                 }
@@ -112,7 +112,7 @@ namespace ProjektASD
                 // Search for device and write "NIE" for no device and "TAK" if device exists
                 if (command[0] == "WK")
                 {
-                    Console.WriteLine(tree.CheckIfDeviceExists(tree.deviceRoot, command[1]));
+                    Console.WriteLine(tree.CheckIfDeviceExists(tree.DeviceRoot, command[1]));
                 }
 
 
@@ -121,7 +121,7 @@ namespace ProjektASD
                 {
                     String adres = command[1] + ".0";   // + ".0" ponieważ w pliku podaje się tylko 3 pierwsze oktety, następuje ręczne dodanie czwartego w celu poprawnego działania
                                                         
-                    Console.WriteLine(tree.HowManyInSubnet(tree.deviceRoot, adres));
+                    Console.WriteLine(tree.HowManyInSubnet(tree.DeviceRoot, adres));
                 }
 
 
@@ -129,15 +129,15 @@ namespace ProjektASD
                 if (command[0] == "WY")
                 {
                     Console.WriteLine("Drzewo urządzeń");
-                    tree.Display(tree.deviceRoot, 0);
+                    tree.Display(tree.DeviceRoot, 0);
                 }
                 
 
                 // Add Connection between Subnets
                 if (command[0] == "DP")
                 {
-                    Subnet komputerA = tree.SearchAndReturnSubnet(tree.deviceRoot, command[1] + ".0"); // Source Subnet
-                    Subnet komputerB = tree.SearchAndReturnSubnet(tree.deviceRoot, command[2] + ".0"); // Target Subnet
+                    Subnet komputerA = tree.SearchAndReturnSubnet(tree.DeviceRoot, command[1] + ".0"); // Source Subnet
+                    Subnet komputerB = tree.SearchAndReturnSubnet(tree.DeviceRoot, command[2] + ".0"); // Target Subnet
 
                     // If there is no source or target Subnet, write "NIE"
                     if (komputerA == null || komputerB == null)
@@ -168,8 +168,8 @@ namespace ProjektASD
                 // Delete Connection between Subnets
                 if (command[0] == "UP")
                 {
-                    Subnet komputerA = tree.SearchAndReturnSubnet(tree.deviceRoot, command[1] + ".0"); // Source Subnet
-                    Subnet komputerB = tree.SearchAndReturnSubnet(tree.deviceRoot, command[2] + ".0"); // Target Subnet
+                    Subnet komputerA = tree.SearchAndReturnSubnet(tree.DeviceRoot, command[1] + ".0"); // Source Subnet
+                    Subnet komputerB = tree.SearchAndReturnSubnet(tree.DeviceRoot, command[2] + ".0"); // Target Subnet
 
                     // If source or target Subnet don't exist, write "NIE"
                     if (komputerA == null || komputerB == null)
@@ -189,8 +189,8 @@ namespace ProjektASD
                 {
                     String adres1 = AddressOperator.ConvertAddressToSubnet(command[1]);
                     String adres2 = AddressOperator.ConvertAddressToSubnet(command[2]);
-                    Subnet komputerA = tree.SearchAndReturnSubnet(tree.deviceRoot, adres1); // Source Subnet
-                    Subnet komputerB = tree.SearchAndReturnSubnet(tree.deviceRoot, adres2); // Target Subnet
+                    Subnet komputerA = tree.SearchAndReturnSubnet(tree.DeviceRoot, adres1); // Source Subnet
+                    Subnet komputerB = tree.SearchAndReturnSubnet(tree.DeviceRoot, adres2); // Target Subnet
 
                     // If target or source Subnet don't exist, write "NIE"
                     if (komputerA == null || komputerB == null)
@@ -200,7 +200,7 @@ namespace ProjektASD
                     // Else, find best route
                     else
                     {
-                        graph.FindFastestRoute(tree.deviceRoot, komputerA, komputerB);
+                        graph.FindFastestRoute(tree.DeviceRoot, komputerA, komputerB);
                     }
                 }
             } // End - Foreach

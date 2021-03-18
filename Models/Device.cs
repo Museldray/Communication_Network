@@ -8,35 +8,60 @@ namespace ProjektASD.Models
         public int height;
 
         // Address and its integer representation to use in AVL tree search
-        public string address;
-        public uint addressInt;
+        private string address;
+        private uint addressInt;
 
         // This device subnet
-        public Subnet subnet;
+        private Subnet subnet;
 
         // Left and right child to use in AVL tree structure
-        public Device leftDevice, rightDevice;
+        private Device leftDevice, rightDevice;
 
         // Device parameter constructor
         public Device(string address, uint addressInt, Subnet subnet)
         {
+            // AVL related atribs
             this.height = 1;
-            this.subnet = subnet;
 
-            // Set address and subnetAddress
+            // Set address and int representation of address
             this.address = address;
             this.addressInt = addressInt;
+
+            // Connect to subnet
+            this.subnet = subnet;
+        }
+
+        // GET/SET private attributes
+        public Device LeftDevice
+        {
+            get => leftDevice;
+            set => leftDevice = value;
+        }
+        public Device RightDevice
+        {
+            get => rightDevice;
+            set => rightDevice = value;
+        }
+        public Subnet Subnet
+        {
+            get => subnet;
+            set => subnet = value;
+        }
+        public string Address
+        {
+            get => address;
+            set => address = value;
+        }
+        public uint AddressInt
+        {
+            get => addressInt;
+            set => addressInt = value;
         }
 
         // Function to return height of specific Device
         public static int CheckHeight(Device device)
         {
-            if (device == null)
-            {
-                return 0;
-            }
-
-            return device.height;
+            return device == null ? 0 : device.height;
         }
 
         // Function to calculate weight of specific Device in AVL tree
@@ -46,24 +71,13 @@ namespace ProjektASD.Models
             {
                 return 0;
             }
-
-            // Weight = height of left subtree - height of right subtree
-            int weight = Device.CheckHeight(device.leftDevice) - Device.CheckHeight(device.rightDevice);
-
-            return weight;
-        }
-
-        // Function to return Device with lowest integer representation from specific place in a tree
-        public static Device CheckLowestDevice(Device wezel)
-        {
-            Device temp = wezel;
-
-            while (temp.leftDevice != null)
+            else
             {
-                temp = temp.leftDevice;
-            }
+                // Weight = height of left subtree - height of right subtree
+                int weight = Device.CheckHeight(device.LeftDevice) - Device.CheckHeight(device.RightDevice);
 
-            return temp;
+                return weight;
+            }
         }
     }
 }
