@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace ProjektASD
+namespace Network
 {
     class AddressOperator // Class to operate on IP addresses
     {

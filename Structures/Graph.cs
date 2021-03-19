@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Medallion.Collections;
-using ProjektASD.Models;
+using Network.Models;
 
-namespace ProjektASD.Structures
+namespace Network.Structures
 {
     class Graph
     {

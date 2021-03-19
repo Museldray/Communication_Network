@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProjektASD.Models
+namespace Network.Models
 {
     class Subnet : IComparable<Subnet>
     {

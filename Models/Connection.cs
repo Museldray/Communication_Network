@@ -2,7 +2,7 @@
 using System.Linq;
 using Medallion.Collections;
 
-namespace ProjektASD.Models
+namespace Network.Models
 {
     class Connection // Class to define connection between Subnets
     {

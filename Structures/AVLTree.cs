@@ -1,7 +1,7 @@
 ﻿using System;
-using ProjektASD.Models;
+using Network.Models;
 
-namespace ProjektASD.Structures
+namespace Network.Structures
 {
     class AVLTree // AVL Tree class
     {
@@ -15,7 +15,7 @@ namespace ProjektASD.Structures
         }
 
 
-        // Single right rotation in unbalanced Device tree
+        // Single right rotation in unbalanced Device AVL tree
         private Device RightRotate(Device y) // Starting root
         {
             Device x = y.LeftDevice;                          
@@ -32,7 +32,7 @@ namespace ProjektASD.Structures
         }
 
 
-        // Single left rotation in unbalanced Device tree
+        // Single left rotation in unbalanced Device AVL tree
         private Device LeftRotate(Device x) // Starting root
         {
             Device y = x.RightDevice;    // Defining helpers

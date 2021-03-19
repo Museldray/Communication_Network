@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
 using System.Linq;
-using ProjektASD.Structures;
-using ProjektASD.Models;
+using Network.Structures;
+using Network.Models;
 
-namespace ProjektASD
+namespace Network
 {
     class Program
     {
