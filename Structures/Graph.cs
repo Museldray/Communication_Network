@@ -8,7 +8,7 @@ namespace Network.Structures
     class Graph
     {
         // Add connection between two Subnets
-        public void Connect(Subnet sourceSubnet, Subnet destSubnet, int capacity)
+        public static void Connect(Subnet sourceSubnet, Subnet destSubnet, int capacity)
         {
             foreach (Connection polaczenie in sourceSubnet.ConnectedSubnets)
             {
@@ -25,7 +25,7 @@ namespace Network.Structures
         }
 
         // Remove connection between two Subnets
-        public void Disconnect(Subnet sourceSubnet, Subnet destSubnet)
+        public static void Disconnect(Subnet sourceSubnet, Subnet destSubnet)
         {
             foreach (Connection polaczenie in sourceSubnet.ConnectedSubnets)
             {
@@ -39,7 +39,7 @@ namespace Network.Structures
         }
 
         // Find best routing route from one subnet to another and write results in console
-        public void FindFastestRoute(Device root, Subnet sourceSubnet, Subnet destSubnet)
+        public static void FindFastestRoute(Device root, Subnet sourceSubnet, Subnet destSubnet)
         {
             // Call function to set parameters for Dijkstra algorithm
             SetParemetersForDijkstra(root, sourceSubnet); 
@@ -60,7 +60,7 @@ namespace Network.Structures
         }
 
         // Dijkstra algorithm to find best transfer route ( O(n * log n + m) n - unvisited Subnets, m - amount of connections )
-        private void Dijkstra(Subnet sourceSubnet, Subnet destSubnet)
+        private static void Dijkstra(Subnet sourceSubnet, Subnet destSubnet)
         {
             // Create new Priority Queue and add first element on it
             PriorityQueue<Subnet> pQueue = new PriorityQueue<Subnet>();
@@ -105,8 +105,8 @@ namespace Network.Structures
             }
         }
 
-        // Set parameters to run Dijkstra (everything but sourceSubnet should have distanceFromSource set to int.MaxValue, predecessors as null and visisted to false. Source Subnet should have distance from source set to 0
-        private void SetParemetersForDijkstra(Device currentSubnet, Subnet sourceSubnet)
+        // Set params to run Dijkstra (everything but sourceSubnet should have distanceFromSource set to int.MaxValue, predecessors as null and visisted to false. Source Subnet should have distance from source set to 0)
+        private static void SetParemetersForDijkstra(Device currentSubnet, Subnet sourceSubnet)
         {
             if (currentSubnet == null)
             {

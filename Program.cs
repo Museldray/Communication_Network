@@ -18,7 +18,6 @@ namespace Network
 
             // Initialize objects
             AVLTree tree = new AVLTree();
-            Graph graph = new Graph();
 
             string[] input_lines;
 
@@ -89,7 +88,7 @@ namespace Network
 
                             for (int i = 0; i < helper; i++)
                             {
-                                graph.Disconnect(tmp.Last(), subnet);
+                                Graph.Disconnect(tmp.Last(), subnet);
                                 tmp.RemoveLast();
                             }
 
@@ -160,7 +159,7 @@ namespace Network
                             capacity = 100 / Convert.ToInt32(command[3]);
                         }
                         // Create Connection between Subnets
-                        graph.Connect(komputerA, komputerB, capacity);
+                        Graph.Connect(komputerA, komputerB, capacity);
                     }
                 }
 
@@ -179,7 +178,7 @@ namespace Network
                     // Else
                     else
                     {
-                        graph.Disconnect(komputerA, komputerB);
+                        Graph.Disconnect(komputerA, komputerB);
                     }
                 }
 
@@ -200,7 +199,7 @@ namespace Network
                     // Else, find best route
                     else
                     {
-                        graph.FindFastestRoute(tree.DeviceRoot, komputerA, komputerB);
+                        Graph.FindFastestRoute(tree.DeviceRoot, komputerA, komputerB);
                     }
                 }
             } // End - Foreach
