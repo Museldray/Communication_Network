@@ -108,13 +108,11 @@ namespace Network.Structures
         // Set params to run Dijkstra (everything but sourceSubnet should have distanceFromSource set to int.MaxValue, predecessors as null and visisted to false. Source Subnet should have distance from source set to 0)
         private static void SetParemetersForDijkstra(Device currentSubnet, Subnet sourceSubnet)
         {
+            sourceSubnet.distanceFromSource = 0;
+
             if (currentSubnet == null)
             {
                 return;
-            }
-            if (currentSubnet.Subnet == sourceSubnet)
-            {
-                sourceSubnet.distanceFromSource = 0;
             }
             else
             {
