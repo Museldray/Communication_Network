@@ -1,4 +1,4 @@
-# Projekt 3 – Sieć komunikacyjna
+# Projekt – Sieć komunikacyjna
 
 Zaimplementować projekt wspomagający obsługę sieci internetowej. Projekt powinien składać się z
 następujących funkcjonalności:
