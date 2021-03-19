@@ -18,7 +18,6 @@ namespace Network
 
             // Initialize objects
             AVLTree tree = new AVLTree();
-            Graph graph = new Graph();
 
             string[] input_lines;
 
